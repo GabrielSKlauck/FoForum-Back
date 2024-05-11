@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Repository
 {
-    internal class UserRepository
+    public class UserRepository : SocketsHttpConnectionContext 
     {
     }
 }

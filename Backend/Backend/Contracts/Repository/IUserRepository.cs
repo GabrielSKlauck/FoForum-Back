@@ -1,4 +1,5 @@
 ﻿using Backend.DTO;
+using Backend.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Backend.Contracts.Repository
     {
         Task AddUser(UserDTO user);
 
-        Task GetUser(int id);
+        Task<UserEntity> GetUser(int id);
 
         Task UpdateUser(UserDTO user);
 

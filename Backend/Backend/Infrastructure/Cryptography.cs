@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Infrastructure
 {
-    internal class Cryptography
+    public class Cryptography
     {
     }
 }
