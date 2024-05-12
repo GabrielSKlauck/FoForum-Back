@@ -18,6 +18,5 @@ namespace Backend.Entity
 
         public int UserId { get; set; }
 
-        public int AnswersId { get; set; }
     }
 }

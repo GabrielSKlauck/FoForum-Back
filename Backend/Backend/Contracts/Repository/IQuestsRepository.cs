@@ -14,7 +14,7 @@ namespace Backend.Contracts.Repository
 
         Task UpdateQuest(QuestsDTO quest);
 
-        Task DeleteQuest(QuestsDTO quest);
+        Task DeleteQuest(int id);
 
         Task<QuestsEntity> GetQuest(int id);
 

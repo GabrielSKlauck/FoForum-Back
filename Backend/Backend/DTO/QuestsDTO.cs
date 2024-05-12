@@ -16,6 +16,5 @@ namespace Backend.DTO
 
         public int UserId { get; set; }
 
-        public int AnswersId { get; set; }
     }
 }
