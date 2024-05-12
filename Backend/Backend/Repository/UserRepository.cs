@@ -34,7 +34,7 @@ namespace Backend.Repository
 
         public async Task<UserEntity> GetUser(int id)
         {
-            string sql = @$"SELECT FROM USER WHERE ID = @id";
+            string sql = @$"SELECT * FROM USER WHERE ID = @id";
             return await GetConnection().QueryFirstAsync<UserEntity>(sql, new { id });
         }
 
@@ -45,15 +45,17 @@ namespace Backend.Repository
 
             string sql = @$"UPDATE USER SET Nickname = @Nickname,
                                             Email = @Email,
-                                            Password = '{senha}',
+                                            Password = '{senha}'
                                             WHERE ID = @Id";
             await Execute(sql, user);
         }
 
-        public async Task UpdateProfilePicure(UserPictureEntity user)
+        public async Task UpdateProfilePicture(UserPictureEntity user)
         {
-            string sql = "UPDATE USER SET ProfilePicture = @ProfilePicture WHERE ID = @Id";
+            string sql = $@"UPDATE USER SET ProfilePicture = @ProfilePicture WHERE ID = @Id";
             await Execute(sql, user);   
         }
+
+        
     }
 }

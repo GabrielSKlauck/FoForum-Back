@@ -19,7 +19,7 @@ namespace Backend.Infrastructure
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Name),
+                    new Claim(ClaimTypes.Name, user.Nickname),
                     new Claim(ClaimTypes.Email, user.Email),               
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
