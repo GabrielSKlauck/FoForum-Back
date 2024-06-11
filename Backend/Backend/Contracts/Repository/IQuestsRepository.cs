@@ -12,9 +12,9 @@ namespace Backend.Contracts.Repository
     {
         Task AddQuest(QuestsDTO quest);
 
-        Task UpdateQuest(QuestsDTO quest);
+        Task UpdateQuest(QuestsEntity quest);
 
-        Task DeleteQuest(int id);
+        Task DeleteQuest(int id, int userId);
 
         Task<QuestsEntity> GetQuest(int id);
 

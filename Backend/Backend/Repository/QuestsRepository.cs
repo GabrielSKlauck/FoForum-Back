@@ -15,10 +15,10 @@ namespace Backend.Repository
             await Execute(sql, quest);
         }
 
-        public async Task DeleteQuest(int id)
+        public async Task DeleteQuest(int id, int userId)
         {
-            string sql = @$"DELETE FROM QUEST WHERE ID = @id";
-            await Execute(sql, new {id});
+            string sql = @$"DELETE FROM QUESTS WHERE ID = @id AND UserId = @userId";
+            await Execute(sql, new {id, userId});
         }
 
         public async Task<IEnumerable<QuestsEntity>> GetMostRecentQuests()
@@ -39,7 +39,7 @@ namespace Backend.Repository
             return await GetConnection().QueryAsync<QuestsEntity>(sql, new { id });
         }
 
-        public async Task UpdateQuest(QuestsDTO quest)
+        public async Task UpdateQuest(QuestsEntity quest)
         {
             string sql = @$"UPDATE QUESTS SET Title = @Title,
                                                 Description = @Description,
