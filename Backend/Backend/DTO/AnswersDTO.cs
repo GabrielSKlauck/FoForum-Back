@@ -13,5 +13,7 @@ namespace Backend.DTO
         public DateTime Posted { get; set; }
 
         public int UserId { get; set; }
+
+        public int QuestId { get; set; }
     }
 }

@@ -14,7 +14,9 @@ namespace Backend.Contracts.Repository
 
         Task<UserEntity> GetUser(int id);
 
-        Task UpdateUser(UserDTO user);
+        Task UpdateUser(UserEntity user);
+
+        Task UpdateProfilePicture(UserPictureEntity user);
 
         Task DeleteUser(int id);
     }

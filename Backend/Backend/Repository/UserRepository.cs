@@ -2,6 +2,7 @@
 using Backend.DTO;
 using Backend.Entity;
 using Backend.Infrastructure;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,19 +26,36 @@ namespace Backend.Repository
             await Execute(sql, user);
         }
 
-        public Task DeleteUser(int id)
+        public async Task DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            string sql = @$"DELETE FROM USER WHERE ID = @id";
+            await Execute(sql, new { id });
         }
 
-        public Task<UserEntity> GetUser(int id)
+        public async Task<UserEntity> GetUser(int id)
         {
-            throw new NotImplementedException();
+            string sql = @$"SELECT * FROM USER WHERE ID = @id";
+            return await GetConnection().QueryFirstAsync<UserEntity>(sql, new { id });
         }
 
-        public Task UpdateUser(UserDTO user)
+        public async Task UpdateUser(UserEntity user)
         {
-            throw new NotImplementedException();
+            var Cryptography = new Cryptography(SHA512.Create());
+            string senha = Cryptography.CriptografarSenha(user.Password);
+
+            string sql = @$"UPDATE USER SET Nickname = @Nickname,
+                                            Email = @Email,
+                                            Password = '{senha}'
+                                            WHERE ID = @Id";
+            await Execute(sql, user);
         }
+
+        public async Task UpdateProfilePicture(UserPictureEntity user)
+        {
+            string sql = $@"UPDATE USER SET ProfilePicture = @ProfilePicture WHERE ID = @Id";
+            await Execute(sql, user);   
+        }
+
+        
     }
 }
