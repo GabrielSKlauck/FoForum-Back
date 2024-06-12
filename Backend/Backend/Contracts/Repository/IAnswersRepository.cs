@@ -1,4 +1,5 @@
 ﻿using Backend.DTO;
+using Backend.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,10 @@ namespace Backend.Contracts.Repository
     {
         Task AddAnswers(AnswersDTO answer);
 
-        Task UpdateAnswers(AnswersDTO answer);
+        Task UpdateAnswers(string description, int id);
 
         Task DeleteAnswers(int id);
 
-        Task<IEnumerable<AnswersDTO>> GetAnswersByQuestId(int id);
+        Task<IEnumerable<AnswersEntity>> GetAnswersByQuestId(int id);
     }
 }
